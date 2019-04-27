@@ -31,16 +31,24 @@ class Game:
         pygame.display.flip()
 
     def on_update(self):
+        input_x = 0
+        input_y = 0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+                elif event.key == pygame.K_w:
+                    input_y = 1
+                elif event.key == pygame.K_a:
+                    input_x = -1
+                elif event.key == pygame.K_d:
+                    input_x = 1
 
         clock = pygame.time.Clock()
-        milliseconds = clock.tick(30)
-        self.playtime += milliseconds / 1000.0
+        deltaT = clock.tick(30)
 
-        self.asteroid.update()
-        self.player.update()
+        self.asteroid.update(deltaT)
+        self.player.update(deltaT)
