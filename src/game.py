@@ -1,4 +1,5 @@
 import pygame
+from src.asteroid import Asteroid
 
 
 class Game:
