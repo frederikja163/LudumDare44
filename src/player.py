@@ -8,7 +8,7 @@ class Player:
         self.x = 0
         self.y = 0
 
-        self.speed = 0.2
+        self.speed = 5
 
     def draw(self, screen):
         screen.blit(self.player, (self.x, self.y))
