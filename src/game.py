@@ -26,7 +26,7 @@ class Game:
         self.screen.blit(self.background, (0, 0))
 
         self.asteroid.draw(self.screen)
-        self.player.draw()
+        self.player.draw(self.screen)
 
         pygame.display.flip()
 
