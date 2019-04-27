@@ -8,5 +8,5 @@ class Player:
     def draw(self, screen):
         screen.blit(self.player, (0, 0))
 
-    def update(self):
+    def update(self, delta_t):
         pass

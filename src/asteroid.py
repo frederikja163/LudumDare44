@@ -12,6 +12,6 @@ class Asteroid:
     def draw(self, screen):
         screen.blit(self.img, (self.x, self.y))
 
-    def update(self):
+    def update(self, delta_t):
         self.x += self.vel_x
         self.y += self.vel_y
