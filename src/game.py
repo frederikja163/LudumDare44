@@ -1,5 +1,6 @@
 import pygame
 from src.player import Player
+from src.asteroid import Asteroid
 
 class Game:
     def __init__(self):
@@ -13,6 +14,7 @@ class Game:
         self.background.fill((255, 255, 255))
         self.background = self.background.convert()
 
+        self.asteroid = Asteroid()
         self.player = Player()
 
     def main(self):
@@ -23,6 +25,7 @@ class Game:
     def on_draw(self):
         self.screen.blit(self.background, (0, 0))
 
+        self.asteroid.draw(self.screen)
         self.player.draw()
 
         pygame.display.flip()
@@ -39,4 +42,5 @@ class Game:
         milliseconds = clock.tick(30)
         self.playtime += milliseconds / 1000.0
 
+        self.asteroid.update()
         self.player.update()

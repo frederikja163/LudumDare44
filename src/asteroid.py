@@ -2,4 +2,11 @@ import pygame
 
 
 class Asteroid:
-    pass
+    def __init__(self):
+        self.img = pygame.image.load("../res/asteroid_large.png")
+
+    def draw(self, screen):
+
+
+    def update(self):
+        pass
