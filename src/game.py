@@ -1,5 +1,5 @@
 import pygame
-
+from src.player import Player
 
 class Game:
     def __init__(self):
@@ -13,6 +13,8 @@ class Game:
         self.background.fill((255, 255, 255))
         self.background = self.background.convert()
 
+        self.player = Player()
+
     def main(self):
         while self.running:
             self.on_update()
@@ -20,6 +22,8 @@ class Game:
 
     def on_draw(self):
         self.screen.blit(self.background, (0, 0))
+
+        self.player.draw()
 
         pygame.display.flip()
 
@@ -34,3 +38,5 @@ class Game:
         clock = pygame.time.Clock()
         milliseconds = clock.tick(30)
         self.playtime += milliseconds / 1000.0
+
+        self.player.update()
