@@ -6,6 +6,7 @@ class Game:
     def __init__(self):
         pygame.init()
 
+        self.playtime = 0
         self.running = True
 
         self.screen = pygame.display.set_mode([1028, 720])
@@ -15,7 +16,6 @@ class Game:
 
         self.asteroid = Asteroid()
         self.player = Player()
-        self.play_time = 0
 
     def main(self):
         while self.running:
@@ -31,25 +31,15 @@ class Game:
         pygame.display.flip()
 
     def on_update(self):
-        input_x = 0
-        input_y = 0
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-                elif event.key == pygame.K_w:
-                    input_y = 1
-                elif event.key == pygame.K_a:
-                    input_x = -1
-                elif event.key == pygame.K_d:
-                    input_x = 1
 
-        time = pygame.time.get_ticks()
-        delta_t = (time - self.play_time) / 100
-        self.play_time = pygame.time.get_ticks()
+        clock = pygame.time.Clock()
+        deltaT = clock.tick(30)
 
-        self.asteroid.update(delta_t)
-        self.player.update(delta_t)
+        self.asteroid.update(deltaT)
+        self.player.update(deltaT)
