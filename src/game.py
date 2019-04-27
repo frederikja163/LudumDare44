@@ -6,7 +6,6 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        self.playtime = 0
         self.running = True
 
         self.screen = pygame.display.set_mode([1028, 720])
@@ -16,6 +15,7 @@ class Game:
 
         self.asteroid = Asteroid()
         self.player = Player()
+        self.play_time = 0
 
     def main(self):
         while self.running:
@@ -47,8 +47,9 @@ class Game:
                 elif event.key == pygame.K_d:
                     input_x = 1
 
-        clock = pygame.time.Clock()
-        deltaT = clock.tick(30)
+        time = pygame.time.get_ticks()
+        delta_t = (time - self.play_time) / 100
+        self.play_time = pygame.time.get_ticks()
 
-        self.asteroid.update(deltaT)
-        self.player.update(deltaT)
+        self.asteroid.update(delta_t)
+        self.player.update(delta_t)
